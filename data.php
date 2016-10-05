@@ -27,6 +27,11 @@
 		}
 	
 	
+	$people = getAllPeople();
+	
+	echo "<pre>";
+	var_dump($people);
+	echo "</pre>";
 ?>
 <h1>Data</h1>
 <p> 
@@ -46,19 +51,55 @@
 	<input type="submit" value="Salvesta">	
 </form>
 
+<h2>Arhiiv</h2>
+<?php
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-			 
+	foreach ($people as $p) {
 		
+		echo "<h3 style= ' color:".$p->color."; '>" .$p->gender."</h3>";
+	}
+?>
+
+<h2>Arhiivitabel</h2>
+<?php
+
+	$html = "<table>";
+	
+		$html .= "<tr>";
+			$html .= "<th>ID</th>";
+			$html .= "<th>Sugu</th>";
+			$html .= "<th>Värv</th>";
+			$html .= "<th>Loodud</th>";
+		$html .= "</tr>";
+
+	foreach($people as $p) {
+		$html .= "<tr>";
+			$html .= "<td>".$p->id."</td>";
+			$html .= "<td>".$p->gender."</td>";
+			$html .= "<td style=' background-color:".$p->color."; '>".$p->color."</td>";
+			$html .= "<td>".$p->created."</td>";
+		$html .= "</tr>";	
+	}
+
+	$html .= "</table>";
+	echo $html;
+	
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
